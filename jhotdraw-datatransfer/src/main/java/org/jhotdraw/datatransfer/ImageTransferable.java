@@ -46,13 +46,18 @@ public class ImageTransferable implements Transferable {
     if (flavor.equals(DataFlavor.imageFlavor)) {
       result = image;
     } else if (flavor.equals(IMAGE_PNG_FLAVOR)) {
-      ByteArrayOutputStream buf = new ByteArrayOutputStream();
-      ImageIO.write(Images.toBufferedImage(image), "PNG", buf);
-      result = new ByteArrayInputStream(buf.toByteArray());
+
+      result = getPngImageData();
     } else {
       throw new UnsupportedFlavorException(flavor);
     }
     return result;
+  }
+
+  private byte[] getPngImageData() throws IOException {
+    ByteArrayOutputStream buf = new ByteArrayOutputStream();
+    ImageIO.write(Images.toBufferedImage(image), "PNG", buf);
+    return buf.toByteArray();
   }
 
   @Override
