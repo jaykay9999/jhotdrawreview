@@ -146,9 +146,9 @@ public class DefaultDrawing extends AbstractDrawing {
   }
 
   @Override
-  public Figure findFigureBehind(Point2D.Double p, Object obj) {
+  public Figure findFigureBehind(Point2D.Double p, Object figuresCollection) {
 
-    if (obj instanceof Figure) {
+    if (figuresCollection instanceof Figure) {
       boolean isBehind = false;
       for (Figure f : getFiguresFrontToBack()) {
         if (isBehind) {
@@ -156,20 +156,20 @@ public class DefaultDrawing extends AbstractDrawing {
             return f;
           }
         } else {
-          isBehind = obj == f;
+          isBehind = figuresCollection == f;
         }
       }
       return null;
-    } else if (obj instanceof Collection) {
+    } else if (figuresCollection instanceof Collection) {
 
-      int inFrontOf = obj.size();
+      int inFrontOf = figuresCollection.size();
       for (Figure f : getFiguresFrontToBack()) {
         if (inFrontOf == 0) {
           if (f.isVisible() && f.contains(p)) {
             return f;
           }
         } else {
-          if (obj.contains(f)) {
+          if (figuresCollection.contains(f)) {
             inFrontOf--;
           }
         }
