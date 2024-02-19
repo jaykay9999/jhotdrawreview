@@ -632,14 +632,14 @@ public final class Geom {
    * accordingly. The grow() method does not check whether the resulting values of width and height
    * are non-negative.
    *
-   * @param HE the horizontal expansion
-   * @param VE the vertical expansion
+   * @param horizontalExpansion
+   * @param verticalExpansion
    */
-  public static void grow(Rectangle2D.Double r, double HE, double VE) {
-    r.x -= HE;
-    r.y -= VE;
-    r.width += HE * 2d;
-    r.height += VE * 2d;
+  public static void grow(Rectangle2D.Double r, double horizontalExpansion, double verticalExpansion) {
+    r.x -= horizontalExpansion;
+    r.y -= verticalExpansion;
+    r.width += horizontalExpansion * 2d;
+    r.height += verticalExpansion * 2d;
   }
 
   /**
