@@ -259,6 +259,7 @@ public class SVGOutputFormat implements OutputFormat {
       boolean isRelativeToFigureBounds,
       AffineTransform transform)
       throws IOException {
+    assert Parameters.length == 5 : "Parameters array must have a length of 5";
     Element elem = doc.getOwnerDocument().createElement("radialGradient");
     writeAttribute(elem, "cx", toNumber(Parameters[0]), "0.5");
     writeAttribute(elem, "cy", toNumber(Parameters[1]), "0.5");
