@@ -78,28 +78,29 @@ public class PertPanel extends JPanel {
     ButtonGroup group = new ButtonGroup();
     m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.1, null)));
     group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.25, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.5, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.75, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.0, null)));
-    rbmi.setSelected(true);
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.25, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.5, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 2, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 3, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 4, null)));
-    group.add(rbmi);
+    
+    //levels between 0.25 and 1.5 with a 0.25 increment
+    for (double zoomLevel = 0.25; zoomLevel <= 1.5; zoomLevel += 0.25) {
+        if (zoomLevel == 1.0) {
+            m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null)));
+            rbmi.setSelected(true);
+            group.add(rbmi);
+        } else {
+            m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null)));
+            group.add(rbmi);
+        }
+    }
+    
+    //levels between 2 and 4 with a 1 increment
+    for (double zoomLevel = 2; zoomLevel <= 4; zoomLevel++) {
+        m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null)));
+        group.add(rbmi);
+    }
+    
     pb.add(m);
     pb.setFocusable(false);
     creationToolbar.addSeparator();
+
     creationToolbar.add(pb);
     DefaultDrawing drawing = new DefaultDrawing();
     view.setDrawing(drawing);
