@@ -626,9 +626,9 @@ public final class Geom {
    * on both the left and right side, and vertical expansion units larger at both the top and
    * bottom.
    *
-   * <p>The new Rectangle2D.Double grows is if HE and VE are positive,
+   * <p>The new Rectangle2D.Double grows is if horizontalExpansion and verticalExpansion are positive,
    *
-   * <p>If negative values are supplied for HE and VE, the size of the Rectangle2D decreases
+   * <p>If negative values are supplied for horizontalExapnsion and verticalExpansion, the size of the Rectangle2D decreases
    * accordingly. The grow() method does not check whether the resulting values of width and height
    * are non-negative.
    *
